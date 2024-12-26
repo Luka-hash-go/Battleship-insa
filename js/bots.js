@@ -1,5 +1,5 @@
 // Todo : Changer le mode de recherhce de medium qui fait tout de gauche -> droite et haut bas au lieu de partir du dernier bateua trouver
-
+//
 
 function generateBoardBot() {
     for (let i = 0; i < shipArray.length; i++) {
