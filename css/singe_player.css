@@ -460,44 +460,83 @@ footer {
 {
   display: none;
 }
-/* Media query for mobile devices */
+/* Media query pour mobile */
 @media (max-width: 768px) {
-  .player {
-    margin: 5vmin;
-  }
-
-  .connected, .ready {
-    font-size: 14px;
-  }
-
-  .connected.active,
-  .ready.active {
-    font-size: 16px;
-  }
-
-  .grid-original {
-    display: block;
+  .game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
+    padding: 5px;
+    margin: 0 auto;
+    overflow-x: hidden;
   }
+
+  .game-grid {
+    width: 90vw;
+    height: 90vw;
+    max-width: 350px;
+    max-height: 350px;
+    margin: 10px auto;
+    transform: scale(0.95);
+  }
+
+  .ship-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    margin-top: 20px;
+  }
+
+  .ship {
+    transform: scale(0.85);
+    margin: 5px 0;
+  }
+
+  .start-button, 
+  .ship-button, 
+  .reset {
+    width: auto;
+    max-width: none;
+    font-size: 14px;
+    padding: 10px;
+    margin: 5px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 5px;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+  }
+  
 }
-
-/* Media query for tablets */
+/* Media query pour tablette */
 @media (min-width: 769px) and (max-width: 1024px) {
-  .player {
-    margin: 3vmin;
+  .game-container {
+    padding: 15px;
   }
 
-  .connected, .ready {
-    font-size: 16px;
+  .game-grid {
+    width: 90%;
+    max-width: 500px;
   }
 
-  .connected.active,
-  .ready.active {
-    font-size: 18px;
+  .ship-container {
+    gap: 15px;
   }
 
-  .grid-original {
-    display: block;
-    width: 80%;
+  .start-button, .ship-button {
+    width: auto;
+    min-width: 180px;
+    font-size: 15px;
   }
 }

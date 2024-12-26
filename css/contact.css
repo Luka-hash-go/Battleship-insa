@@ -166,9 +166,27 @@
 
     form {
         padding: 10px;
+        width: 90%;
+        margin: auto;
+    }
+
+    form input, form textarea {
+        font-size: 14px;
+        padding: 8px;
         width: 100%;
+        margin: 5px 0;
+    }
+
+    .footer-icons {
+        gap: 10px;
+    }
+
+    .footer-icons a {
+        font-size: 1.2rem;
+        margin-left: 2px;
     }
 }
+
 
 /* Media query for tablets */
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -188,6 +206,23 @@
 
     form {
         padding: 20px;
-        width: 80%;
+        width: 70%;
+        margin: auto;
+    }
+
+    form input, form textarea {
+        font-size: 16px;
+        padding: 10px;
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .footer-icons {
+        gap: 15px;
+    }
+
+    .footer-icons a {
+        font-size: 1.4rem;
+        margin-left: 3px;
     }
 }
