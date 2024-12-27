@@ -153,7 +153,7 @@
         }
 
         .footer-mentions {
-            text-alig:center;
+            text-align:center;
         }
 
         .footer-icons {
@@ -171,111 +171,140 @@
         .footer-icons a:hover {
             color: #ccc;
         }
-/* Media queries pour téléphone */
+/* Media queries pour telephone */
 @media (max-width: 768px) {
-            .news-carousel {
+  
+    .navbar {
+        position: relative;
+        flex-direction: column; /* Colonne pour les petits écrans */
+        align-items: center; /* Aligne les éléments à gauche */
+        align-self: center;
+    }
+    
+    .navbar a {
+        width: 80%; /* Les liens prennent toute la largeur */
+        text-align: center; /* Texte aligné à gauche */
+        padding: 8% 8%; /* Ajustez le padding selon vos besoins */
+        border-radius: 2px;
+        align-self: center;
+        position: relative;
+    }
+   
+   
+    
+    .news-carousel {
                 width: 100%;
                 height: auto;
                 margin: 50px auto;
-            }
+    }
         
-            .news-card {
+    .news-card {
                 flex-direction: column;
                 padding: 10px;
                 max-width: 100%;
-            }
+    }
         
-            .news-card img {
+    .news-card img {
                 width: 100%;
                 margin-right: 0;
                 margin-bottom: 10px;
-            }
+    }
         
-            .news-card .content {
+    .news-card .content {
                 width: 100%;
-            }
+    }
         
-            .navbar a {
-                font-size: 16px;
-                margin: 0 5px;
-            }
+            
         
-            .navbar .nav-link:hover {
-                font-size: 18px;
-            }
-        
-            body::before {
+    body::before {
                 background-size: contain;
                 filter: blur(5px);
-            }
+    }
         
-            .card {
-                border-radius: 10px;
-                padding: 10px;
-            }
-        
-            .footer-icons {
-                gap: 10px;
-            }
-        
-            .footer-icons a {
-                font-size: 1.2rem;
-                margin-left: 2px;
-            }
-        
-            .carousel-button {
-                font-size: 2rem;
-                margin: 0 10px;
-                position: static;
-                transform: none;
-            }
-        
-            .footer-mentions {
-                font-size: 12px;
-                padding: 10px;
-            }
+    .card {
+            border-radius: 10px;
+            padding: 10px;
+    }
+    footer {
+            margin-top: 10%;
+            width: 100%;
+            position: relative;
+            bottom: 1%;
+            left: 0;
+            padding: 1% 1%;
+            text-align: center;
+            color: #fff;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1% 1px;
+    }
+    .carousel-button.left {
+            margin-left: -95%;
+    }
+    
+    .carousel-button.right {
+            margin-right: -95%;
+        }
+        .carousel-button {
+            background: none;
+            border: none;
+            font-size: 2.4rem;
+            color: #000;
+            cursor: pointer;
+            position: absolute;
+            top: 30%;
+            transform: translateY(-50%);
+            z-index: 10;
+            transition: color 0.3s;
+        }
+        body::before {
+            background-size: contain;
+            filter: blur(5px);
+        }
 }
         
         /* Media queries pour tablettes */
 @media (min-width: 769px) and (max-width: 1024px) {
-            .navbar a {
-                font-size: 17px;
-                margin: 0 8px;
-            }
+        .navbar a {
+            font-size: 17px;
+            margin: 0 8px;
+        }
         
-            .navbar .nav-link:hover {
-                font-size: 19px;
-            }
+        .navbar .nav-link:hover {
+            font-size: 19px;
+        }
         
-            body::before {
-                background-size: cover;
-                filter: blur(8px);
-            }
+        body::before {
+            background-size: cover;
+            filter: blur(8px);
+        }
         
-            .card {
-                border-radius: 12px;
-                padding: 15px;
-            }
+        .card {
+            border-radius: 12px;
+            padding: 15px;
+        }
         
-            .footer-icons {
-                gap: 15px;
-            }
+        .footer-icons {
+            gap: 15px;
+        }
         
-            .footer-icons a {
-                font-size: 1.4rem;
-                margin-left: 3px;
-            }
+        .footer-icons a {
+            font-size: 1.4rem;
+            margin-left: 3px;
+        }
         
-            .carousel-button {
-                font-size: 3rem;
-                margin: 0 20px;
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-            }
+        .carousel-button {
+            font-size: 3rem;
+            margin: 0 20px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
         
-            .footer-mentions {
-                font-size: 14px;
-                padding: 15px;
-            }
+        .footer-mentions {
+            font-size: 14px;
+            padding: 15px;
+        }
 }
