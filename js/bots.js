@@ -46,6 +46,7 @@ function generateHitBot() {
  */
 
 
+// Easy et Medium
 function generateEasy(ship) {
     let direction = 10 ** Math.floor(Math.random() * 2) // = 1 -> Horizontal // = 10 -> Vertical
     let randomStarte = 0;
@@ -81,9 +82,8 @@ function generateEasy(ship) {
     }
 }
 
-// Full aléatoire -> Algo IA prochainement
-function generateMedium(ship) {
-
+// Pour l'instant full hasard mais algo ia après // Hard et Impossible
+function generateHard(ship) {
     let direction = 10 ** Math.floor(Math.random() * 2) // = 1 -> Horizontal // = 10 -> Vertical
     let randomStarte = 0;
 
@@ -108,7 +108,7 @@ function generateMedium(ship) {
     for (let i = 0; i <= ship.size; i++) {
         // Il y a déjà un bateau sur la trajectoire !. On se prends pas la tete on recommence.
         if (computerSquares[randomStarte + i * direction].classList.contains('taken')) {
-            generateMedium(ship)
+            generateHard(ship)
             return;
         }
     }
@@ -116,10 +116,6 @@ function generateMedium(ship) {
     for (let i = 0; i <= ship.size; i++) {
         computerSquares[randomStarte + i * direction].classList.add('taken', ship.name)
     }
-}
-
-function generateHard() {
-
 }
 
 
@@ -184,7 +180,7 @@ function botMediumHit() {
         // Bateau horizontal
         // On va tirer au hasard, si on va vers la gauche ou vers la droite :
         let dest = 0
-        while(dest == 0){dest = Math.random() * 2 - 1} // Le while permet juste de faire en sorte que le random ne donne pas 0 (et div par 0 ensuite) C'est juste au cas ou
+        while (dest == 0) { dest = Math.random() * 2 - 1 } // Le while permet juste de faire en sorte que le random ne donne pas 0 (et div par 0 ensuite) C'est juste au cas ou
         dest /= Math.abs(dest) // = -1 ou 1
 
         // Si bateau vertical dest *= 10 (pour avoir une transistion en vertical)
@@ -194,14 +190,35 @@ function botMediumHit() {
         do {
             loc += dest
             // Si la case est un miss ou qu'on est sortie de la limite du jeu, on doit faire chemin arriere :
-            if (loc < 0 || loc > 99 || (getDizaine(loc) != getDizaine(locBase) && getUnite(loc) != getUnite(locBase)) || userSquares[loc].classList.contains('miss'))
-                {
-                    dest *= -1
-                    loc += dest // On revient en arrière sinon on sort de la boucle
-                } 
+            if (loc < 0 || loc > 99 || (getDizaine(loc) != getDizaine(locBase) && getUnite(loc) != getUnite(locBase)) || userSquares[loc].classList.contains('miss')) {
+                dest *= -1
+                loc += dest // On revient en arrière sinon on sort de la boucle
+            }
         } while (userSquares[loc].classList.contains('boom'))
     }
     return loc
+}
+
+function botHardHit() {
+    // L'idée va être de tirer sur que des cases impaires, puis appelé l'algo (botMediumHit quand un bateau à été touché sans être détruit)
+    for (let i = 0; i < shipArray.length; i++) {
+        if (userLost[i] > 0 && userLost[i] <= shipArray[i].size) {
+            return botMediumHit()
+        }
+    }
+
+    // Aucun bateau n'a été touché sans coulé. On va prendre les diagonales. Voici l'idée :
+    // Les diagonales sont les nombre ou le chiffre des dizaine et unité sont tout deux paires ou impaire. On va donc générer au pif un nombre des dizaine. En fonction de la parité de ce dernier on va générer (au pif) le nombre des unité
+    let loc;
+
+    do {
+        loc = Math.floor(Math.random() * 9)
+
+        if (loc % 2 == 0) loc = 10 * loc + Math.floor(Math.random() * 5) * 2 // Cas pair
+        else loc = 10 * loc + Math.floor(Math.random() * 5) * 2 + 1 // Cas impaire
+    } while (userSquares[loc].classList.contains('miss') || userSquares[loc].classList.contains('boom'));
+    return (loc)
+
 }
 
 // Le bot a 100% De réussite
