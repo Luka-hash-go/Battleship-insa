@@ -142,137 +142,66 @@ function botEasyHit() {
     return differenceLoc
 }
 
-// Le bot est le meme que le Easy, sauf que quand il touche une cible, il va tenter les cases a coté jusqu'à avoir la cible
+
+
 function botMediumHit() {
-    // Tout d'abord on regarde si un bateau a été touché sans être coulé :
-    for (let bateauId = 0; bateauId < shipArray.length; bateauId++) {
-
-        // On a trouvé un bateau qui a été touché et pas coulé !
-        if (userLost[bateauId] > 0 && userLost[bateauId] <= shipArray[bateauId].size) {
-
-            // Deux cas : 
-            // - 1 seule case à été dévoilé, impossible de connaitre le sens
-            // - >=2 cases dévoilé on connait le sens on continue !
-
-            // 1er cas :
-            if (userLost[bateauId] == 1) {
-                do {
-                    // !!!!!
-                    // V2ERIFIER LE CAS DES BORDS !
-                    // !!!! 
-
-                    // Ici on vérifie que notre point n'est pas un bord. Si c'est le cas on peux pas taper n'importe ou
-                    //On tire au sort (hasard) parmis les cases restante autour. On sait qu'il y en a forcément une : 4 cases : (+1, -1, +10, -10)
-                    do {
-                        differenceLoc = Math.floor(Math.random() * 3 - 1); // D'abord on tire un nombre qui est -1, 0, 1. Cependant si le nombre tiré est 0, on recommence
-                    } while (differenceLoc == 0);
-
-                    // Ensuite on tire (encore au hasard) un nombre qui est soit 0 soit 1 et on fait 10**{0,1}*nb. Ainsi on a une chance sur deux d'avoir +-10 et une chance sur deux d'avoir +-1
-                    differenceLoc *= 10 ** (Math.floor(Math.random() * 2))
-
-                    for (let coordonnee = 0; coordonnee < 99; coordonnee++) // On met 99, au cas ou le bateau est en bas a droite
-                    {
-                        if (userSquares[coordonnee].classList.contains(shipArray[bateauId].name) && userSquares[coordonnee].classList.contains('boom')) {
-
-                            differenceLoc += coordonnee
-                            // On vérifie si la differenceLoc sort du tableau
-                            if ((getDizaine(differenceLoc) != getDizaine(coordonnee) && getUnite(differenceLoc) != getUnite(coordonnee)) || differenceLoc < 0 || differenceLoc > 99) {
-                                // On remet la valeur de differenceLoc
-                                differenceLoc -= coordonnee
-                                continue;
-                            }
-                            console.log("valeur de base : ", coordonnee)
-                            console.log("differenceLoc : ", differenceLoc)
-                            break;
-                            // On a désormais {-10,-1,1,10} avec un proba équiprobable
-                        }
-                    }
-                    // Mais on doit maintennat vérifier que la case n'a pas déjà était attaqué, sinon on recommence (bourin / pas opti mais fonctionne)
-
-                } while (userSquares[differenceLoc].classList.contains('miss') || userSquares[differenceLoc].classList.contains('boom'));
-                // On a notre differenceLoc, on peux la retourner !
-                return differenceLoc
-
-                //2ème cas
-            } else {
-                console.log(">1 case")
-
-                // On va commencer par chercher la direction :
-                // On va un peu tricher sur ce coup, et on va parcourir le userSquare jusqu'à trouver un bateau du nom i. Si il existe un bateau juste a coté a la droite c'est que c'est horizontal. Sinon vertical
-                for (let coordonnee = 0; coordonnee < 99; coordonnee++) // On met 99, au cas ou le bateau est en bas a droite
-                {
-                    if (userSquares[coordonnee].classList.contains(shipArray[bateauId].name)) {
-                        // On vériife qu'on est pas dans un bord et qu'on sort de ce bord
-
-                        // Cas horizontal
-                        if (userSquares[coordonnee + 1].classList.contains(shipArray[bateauId].name)) {
-                            //Un peu tricky, on choisi un coté (hasard) et on mets une case vers ce côté. Si il y a un miss. On arrete tout et on va de l'autre coté
-                            // Si on a 0 on recommence
-                            do {
-                                differenceLoc = Math.floor(Math.random() * 2 - 1);
-                            } while (differenceLoc == 0);
-
-                            while (userSquares[coordonnee].classList.contains('boom')) {
-                                // On vérifie si on a pas atteint un point déjà explorer ou il n'y avait rien
-                                // remarque on a déjà vérifier que a minima la case du dessous continent le nom du bateau
-                                if (userSquares[coordonnee].classList.contains('miss')) {
-                                    coordonnee--
-                                    break;
-                                }
-                                // On vérifie si on est sortie du tableau
-                                if ((getDizaine(coordonnee) != getDizaine(coordonnee+differenceLoc) && getUnite(coordonnee) != getUnite(coordonnee+differenceLoc)) || coordonnee+differenceLoc < 0 || coordonnee+differenceLoc > 99) {
-                                    break;
-                                }
-                                coordonnee += differenceLoc
-                            }
-
-                            // On est dans le cas ou c'était un case miss. On recommence a l'envers
-                            if (userSquares[coordonnee].classList.contains('miss')) {
-                                do {
-                                    coordonnee -= differenceLoc
-                                } while ((userSquares[coordonnee].classList.contains('boom')));
-                            }
-                        }
-                        // Cas vertical
-                        else {
-                            if (userSquares[coordonnee + 10].classList.contains(shipArray[bateauId].name)) {
-                                //Un peu tricky, on choisi un coté (hasard) et on mets une case vers ce côté. Si il y a un miss. On arrete tout et on va de l'autre coté
-                                // Si on a 0 on recommence
-                                do {
-                                    differenceLoc = 10 * Math.floor(Math.random() * 2 - 1);
-                                } while (differenceLoc == 0);
-
-                                while (userSquares[coordonnee].classList.contains('boom')) {
-                                    // On vérifie si on a pas atteint un point déjà explorer ou il n'y avait rien
-                                    // remarque on a déjà vérifier que a minima la case du dessous continent le nom du bateau
-                                    if (userSquares[coordonnee].classList.contains('miss')) {
-                                        coordonnee -= 10
-                                        break;
-                                    }
-                                    console.log("test de coordonnee ", coordonnee)
-                                    coordonnee += 10
-                                }
-
-                                // On est dans le cas ou c'était un case miss. On recommence a l'envers
-                                if (userSquares[coordonnee].classList.contains('miss')) {
-                                    do {
-                                        coordonnee -= 10
-                                    } while ((userSquares[coordonnee].classList.contains('boom')));
-                                }
-                            }
-                        }
-                        // C'est bon on peux retourner j
-                        return coordonnee
-                    }
-                }
-            }
-
+    const differencePossible = [-10, -1, 1, 10] // Utile pour déterminer au hasard, une case a taper
+    let loc
+    // 1èr truc, regarder si au moins un bateau à été touché et non coulé (Utile pour savoir si on alnce un algo ou juste au piff)
+    // Nb total de bateau détruit
+    let idBoat = -1
+    for (let i = 0; i < shipArray.length; i++) {
+        if (userLost[i] > 0 && userLost[i] <= shipArray[i].size) {
+            idBoat = i
+            break;
         }
     }
 
-    // Si on arrive la, c'est qu'aucun bateau n'a été touché sans être coulé. On fait donc appelle a la méthode Easy
-    return botEasyHit()
+    if (idBoat == -1) {
+        return botEasyHit();
+    }
 
+    // Si on arrive ici, cela signifie qu'un bateau à été touché sans être fini
+    //Avant toute chose, récupérons la loc du bateu en question qui à été touché (si il y en a plusieurs, on récupère la première)
+    let locBase = -1
+    for (let i = 0; i < 99; i++) {
+        if (userSquares[i].classList.contains(shipArray[idBoat].name) && userSquares[i].classList.contains('boom')) {
+            locBase = i
+            break;
+        }
+    }
+
+
+    // Maintenant : Il y a deux cas. Une seule case à été touché, ou plus
+    if (userLost[idBoat] == 1) {
+        // On va faire un do while pour que si on est proche d'un bord, et que la case (hasard) choisi sort du plateau, on recommence (c'est bourin mais ca marche) OU que la case à déjà été shooté
+        do {
+            loc = locBase + differencePossible[Math.floor(Math.random() * 4)]; // locBase + {-10,-1,1,10} 
+        } while (loc < 0 || loc > 99 || (getDizaine(loc) != getDizaine(locBase) && getUnite(loc) != getUnite(locBase)) || userSquares[loc].classList.contains('miss') || userSquares[loc].classList.contains('boom'))
+    }
+    else // if(userLost[i] > 1)
+    {
+        // Bateau horizontal
+        // On va tirer au hasard, si on va vers la gauche ou vers la droite :
+        let dest = 0
+        while(dest == 0){dest = Math.random() * 2 - 1} // Le while permet juste de faire en sorte que le random ne donne pas 0 (et div par 0 ensuite) C'est juste au cas ou
+        dest /= Math.abs(dest) // = -1 ou 1
+
+        // Si bateau vertical dest *= 10 (pour avoir une transistion en vertical)
+        if (!userSquares[locBase + 1].classList.contains(shipArray[idBoat].name)) dest *= 10
+
+        loc = locBase
+        do {
+            loc += dest
+            // Si la case est un miss ou qu'on est sortie de la limite du jeu, on doit faire chemin arriere :
+            if (loc < 0 || loc > 99 || (getDizaine(loc) != getDizaine(locBase) && getUnite(loc) != getUnite(locBase)) || userSquares[loc].classList.contains('miss'))
+                {
+                    dest *= -1
+                    loc += dest // On revient en arrière sinon on sort de la boucle
+                } 
+        } while (userSquares[loc].classList.contains('boom'))
+    }
+    return loc
 }
 
 // Le bot a 100% De réussite

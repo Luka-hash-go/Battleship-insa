@@ -1,6 +1,5 @@
 // ce fichier regroupe toutes les petites fonctions utiles a tous les scripts :
-printWithDelay
-// Arg : 
+
 function printWithDelay() {
   let text = ""
   let delay = 0

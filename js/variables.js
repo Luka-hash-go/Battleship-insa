@@ -1,10 +1,6 @@
 // Ce fichier permet de stocker l'intégralité des variables utilisé le long du jeu (pendant le placement des bateaux / jeu solo/ jeu multi)
 // Nous les avons mis dans un fichier séparé afin que tout soit plus lisible et pour éviter les doublons
 
-
-// Single Player & Multi Player & ShipPlacements
-
-
 // Les différents boutons en bas de l'écran
 const startButton = document.querySelector('#start')
 const rotateButton = document.querySelector('#rotate')
@@ -53,7 +49,9 @@ let currentPlayer = "computer" // Un peu contre intuitif, il faut mettre le nom 
 let player1 = "user" // Nom du joueur 1 (le joueur sur la session)
 let player2 = "computer" // Nom du joueur 2 (adversaire)
 
-const reflexionComputer = 1000 // temps de reflexion du bot en ms (utile pour debug) , defaut : 1000
+const reflexionComputer = 100 // temps de reflexion du bot en ms (utile pour debug) , defaut : 1000
+const debugMode = true // Seul l'ordinateur joue (pour le debug)
+
 
 // Single Player & Multi Player
 
@@ -80,18 +78,5 @@ const shipArray = [
       size: 4,
     },
   ]
-
-let destroyerCount = 0
-let submarineCount = 0
-let cruiserCount = 0
-let battleshipCount = 0
-let carrierCount = 0
-
-let cpuDestroyerCount = 0
-let cpuSubmarineCount = 0
-let cpuCruiserCount = 0
-let cpuBattleshipCount = 0
-let cpuCarrierCount = 0
-
 
 

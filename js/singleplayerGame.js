@@ -1,7 +1,6 @@
 let waitUser = false; // Cette variable permet de compter les clqiues uniqument quand c'est au tour de l'utilsiateur
 let resultat = 0 // = 1 si user1 gagne = -1 si computer gagne
 
-let debugMode = false // Seul l'ordinateur joue (pour le debug)
 
 // Single Player
 function startSinglePlayer(userSquares) {
