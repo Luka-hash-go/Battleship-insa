@@ -488,22 +488,8 @@ footer {
     overflow-y: auto;
     
   }
-<<<<<<< HEAD:css/singe_player.css
   .btn {
     width: 30%;
-=======
-
-  .ship {
-    transform: scale(0.85);
-    margin: 5px 0;
-  }
-
-  /* Ca sert a quelque chose ??? */
-  .start-button, 
-  .ship-button, 
-  .replay-button {
-    width: auto;
->>>>>>> a5b295f7ab536098bf1ff3a6bc7eb5c42f894dac:css/single_player.css
     max-width: none;
     font-size: 14px;
     padding: 10% 10%;
@@ -540,7 +526,6 @@ footer {
   .ship-container {
     gap: 15px;
   }
-<<<<<<< HEAD:css/singe_player.css
   .btn {
     width: 30%;
     max-width: none;
@@ -550,14 +535,6 @@ footer {
     display: inline-block;
     text-align: center;
     border-radius: 10px; 
-=======
-
-  /* Ca sert a quelque chose ??? */
-  .start-button, .ship-button , .replay-button{
-    width: auto;
-    min-width: 180px;
-    font-size: 15px;
->>>>>>> a5b295f7ab536098bf1ff3a6bc7eb5c42f894dac:css/single_player.css
   }
   body::before {
     background-size: contain;
