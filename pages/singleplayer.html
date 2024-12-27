@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Battle Ships</title>
-    <link rel="stylesheet" href="../css/singe_player.css">
+    <link rel="stylesheet" href="../css/single_player.css">
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -41,6 +41,7 @@
       </div>
   </nav>
 
+
     <div class="game-container">
       <div class="container">
         <div class="battleship-grid grid-user"></div>
@@ -54,7 +55,15 @@
           <button id="reset" class="btn">Jeter les bateaux</button>
         </div>
         <h3 id="whose-go" class="info-text"></h3>
-        <h3 id="info" class="info-text"></h3>
+        <div id="info" class="info-text">
+          <label for="difficulty">Veuillez choisir une difficulté : </label> 
+          <select id="difficulty">
+            <option value="Easy">Facile</option>
+            <option value="Medium" selected>Moyen</option>
+            <option value="Hard">Difficile</option>
+            <option value="Impossible">Impossible</option>
+          </select>
+        </div>
       </div>
   
       <div class="container">
@@ -75,8 +84,10 @@
         </div>
       </div>
   
-      <div class="container">
+      <div class="container hidden-info">
+        <div class="setup-buttons" id="setup-buttons">
         <button id="replay" class="btn">Voulez vous rejouer ?</button>
+      </div>
       </div>
     </div>
 

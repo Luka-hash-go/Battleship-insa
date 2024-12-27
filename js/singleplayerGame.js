@@ -5,6 +5,10 @@ let resultat = 0 // = 1 si user1 gagne = -1 si computer gagne
 // Single Player
 function startSinglePlayer(userSquares) {
 
+  // Gestion de la difficulté :
+  botDifficulty = document.getElementById("difficulty").selectedIndex
+  document.getElementById("info").style.display = "none"
+
   this.userSquares = userSquares
   generateBoardBot();
 

@@ -369,6 +369,8 @@ footer {
 .info-text {
   color: white;
   margin: 1rem;
+  width: 0.3;
+
 }
 
 .miss,
@@ -496,9 +498,10 @@ footer {
     margin: 5px 0;
   }
 
+  /* Ca sert a quelque chose ??? */
   .start-button, 
   .ship-button, 
-  .reset {
+  .replay-button {
     width: auto;
     max-width: none;
     font-size: 14px;
@@ -534,7 +537,8 @@ footer {
     gap: 15px;
   }
 
-  .start-button, .ship-button {
+  /* Ca sert a quelque chose ??? */
+  .start-button, .ship-button , .replay-button{
     width: auto;
     min-width: 180px;
     font-size: 15px;

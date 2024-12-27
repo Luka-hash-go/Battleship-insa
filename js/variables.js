@@ -42,7 +42,11 @@ let shotFired = -1
 let casePreciseDernierBateauSelect // Précisement le fragement de bateau cliquer
 let draggedShip
 
-let botDifficulty = "hard" // Easy -> Tir et Placement aléaoitre // Medium -> Placement aléatoire et proba de touché légérement augmenter // Hard -> Placement suivant modèle math + attaque suivant modèle math // Impossible : placement Hard + attaque 100% bonné (c'est plus un modèle pour tester ^^)
+// Easy -> Tir et Placement aléaoitre (0)
+// // Medium -> Placement aléatoire et proba de touché légérement augmenter (1)
+// // Hard -> Placement suivant modèle math + attaque suivant modèle math (2)
+// // Impossible : placement Hard + attaque 100% bonné (c'est plus un modèle pour tester ^^) (3)
+let botDifficulty = 0 
 let gameMode = "singleplayer" // singleplayer / multiplayer
 
 let currentPlayer = "computer" // Un peu contre intuitif, il faut mettre le nom de la personne qui NE commence PAS

@@ -4,19 +4,17 @@
 function generateBoardBot() {
     for (let i = 0; i < shipArray.length; i++) {
         switch (botDifficulty) {
-            case "easy":
-                generateEasy(shipArray[i])
-                break;
-            case "medium":
-                generateEasy(shipArray[i])
-                break;
-            case "hard":
-                generateHard(shipArray[i]);
-            case "impossible":
-                generateHard(shipArray[i]);
-                break;
+            case 0:
+                return generateEasy(shipArray[i])
+            case 1:
+                return generateEasy(shipArray[i])
+            case 2:
+                return generateHard(shipArray[i]);
+            case 3:
+                return generateHard(shipArray[i]);
             default:
                 alert('Difficulé du bot incorrect !')
+                break;
         }
     }
 
@@ -24,16 +22,17 @@ function generateBoardBot() {
 
 function generateHitBot() {
     switch (botDifficulty) {
-        case "easy":
+        case 0:
             return botEasyHit()
-        case "medium":
+        case 1:
             return botMediumHit()
-        case "hard":
+        case 2:
             return botHardHit();
-        case "impossible":
+        case 3:
             return botImpossibleHit();
         default:
             alert('Difficulé du bot incorrect !')
+            break;
     }
 
 }
