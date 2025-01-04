@@ -1,21 +1,32 @@
 let waitUser = false; // Cette variable permet de compter les clqiues uniqument quand c'est au tour de l'utilsiateur
-let resultat = 0 // = 1 si user1 gagne = -1 si computer gagne
+let resultat = 0; // = 1 si user1 gagne = -1 si computer gagne
 
 
 // Single Player
 function startSinglePlayer(userSquares) {
 
   // Gestion de la difficulté :
-  botDifficulty = document.getElementById("difficulty").selectedIndex
-  document.getElementById("info").style.display = "none"
+  botDifficulty = document.getElementById("difficulty").selectedIndex;
+  document.getElementById("info").style.display = "none";
 
-  this.userSquares = userSquares
+  this.userSquares = userSquares;
   generateBoardBot();
 
-  //console.log(computerSquares)
-  //console.log(userSquares)
-  registerEvent() // Permet d'activer l'event du click
-  gameLogic() // Déroulement de la partie (a qui est le tour ...)
+
+  // Permet de voir l'emplacement des bateaux ennemis. Juste pour debug
+  if (debugMode) {
+    console.log("emplacement des bateaux ennemi");
+    let tab = [];
+    for (let i = 0; i < 100; i++) {
+      if (computerSquares[i].classList.contains('taken')) {
+        tab.push(i);
+      }
+    }
+    console.log(tab);
+  }
+
+  registerEvent(); // Permet d'activer l'event du click
+  gameLogic(); // Déroulement de la partie (a qui est le tour ...)
 
 }
 
@@ -31,12 +42,12 @@ function registerEvent() {
 function gameLogic() {
   resultat = isFinish();
   if (resultat != 0) {
-    replayButton.style.display = "block"
+    replayButton.style.display = "block";
     if (resultat == 1) {
-      print("Félicitaion, vous avez gagné :)")
+      print("Félicitaion, vous avez gagné :)");
     }
     else {
-      print("Vous avez perdu :(")
+      print("Vous avez perdu :(");
     }
 
   }
@@ -44,27 +55,26 @@ function gameLogic() {
 
     // On échange les roles (étant donné que dans variable.js le nom du départ n'est pas celui qui commence pg)
     if (currentPlayer == player1) {
-      currentPlayer = player2
+      currentPlayer = player2;
     }
     else {
-      currentPlayer = player1
+      currentPlayer = player1;
     }
 
 
     if (currentPlayer == player1) {
-      print("C'est à vous de jouer !")
-    
-      if(debugMode)
-        {
-            currentPlayer == player2
-      
-        gameLogic()
-        }
+      print("C'est à vous de jouer !");
+
+      if (debugMode) {
+        currentPlayer == player2;
+
+        gameLogic();
+      }
       waitUser = true; // on active le clique en activant l'event
     }
     else {
-      print("C'est au tour de l'adversaire")
-      playerTurn(currentPlayer, generateHitBot())
+      print("C'est au tour de l'adversaire");
+      playerTurn(currentPlayer, generateHitBot());
 
     }
   }
@@ -78,19 +88,19 @@ function playerTurn(joueur, loc) {
   // Tour du joueur principale (celui de la sessioj)
   if (joueur == player1) {
     if (alreadyShow.includes(loc)) {
-      print("Vous avez déjà touché la case n°", loc)
+      print("Vous avez déjà touché la case n°", loc);
       waitUser = true; // le clic n'était pas bon, on ré-active l'évent
     }
     else {
-      alreadyShow.push(loc)
-      revealSquare(joueur, loc)
+      alreadyShow.push(loc);
+      revealSquare(joueur, loc);
     }
   }
   // Au tour du computer
   else {
     // On attends 1 seconde pour faire un peu de roleplay ^^
     setTimeout(function () {
-      revealSquare(joueur, generateHitBot())
+      revealSquare(joueur, generateHitBot());
     }, reflexionComputer);
   }
 
@@ -102,59 +112,55 @@ function revealSquare(joueur, loc) {
   if (joueur == player1) {
     if (computerSquares[loc].classList.contains("taken")) {
       // TOUCHE
-      computerSquares[loc].classList.add('boom')
+      computerSquares[loc].classList.add('boom');
       // Regardons lequel :
 
-      for (let i = 0; i < shipArray.length; i++) {
-        if (computerSquares[loc].classList.contains(shipArray[i].name)) {
+      for (let i = 0; i < Boat.getBoatNumber(); i++) {
+        if (computerSquares[loc].classList.contains(Boat.getNameById(i))) {
           // C'est le bateau d'indice i dans la liste !
-          enemyLost[i]++
+          enemyLost[i]++;
 
           // On regarde si c'étiat le coup fatal ?
-          if (enemyLost[i] == shipArray[i].size + 1) {
-            print("Coulé !")
+          if (enemyLost[i] == Boat.getSizeById(i) + 1) {
+            print("Coulé !");
           }
           else {
-            print("Touché !")
+            print("Touché !");
           }
         }
       }
     }
     else {
-      computerSquares[loc].classList.add('miss')
-      print("Raté")
+      computerSquares[loc].classList.add('miss');
+      print("Raté");
     }
 
     // Sinon par le robot :
   } else {
 
     // Le robot a touché 
-    //console.log(userSquares.length); // Doit être 100
-    //console.log(userSquares); // Vérifiez que tous les éléments sont valides
-    //console.log("la loc v2 est ", loc)
-    //console.log("debur : ", userSquares[0].classList)
     if (userSquares[loc].classList.contains("taken")) {
-      userSquares[loc].classList.add('boom')
+      userSquares[loc].classList.add('boom');
 
-      for (let i = 0; i < shipArray.length; i++) {
-        if (userSquares[loc].classList.contains(shipArray[i].name)) {
+      for (let i = 0; i < Boat.getBoatNumber(); i++) {
+        if (userSquares[loc].classList.contains(Boat.getNameById(i))) {
           // C'est le bateau d'indice i dans la liste !
-          userLost[i]++
+          userLost[i]++;
 
           // On regarde si c'étiat le coup fatal ?
-          if (userLost[i] == shipArray[i].size + 1) {
-            print("Coulé !")
+          if (userLost[i] == Boat.getSizeById(i) + 1) {
+            print("Coulé !");
           }
           else {
-            print("Touché !")
+            print("Touché !");
           }
         }
       }
     }
     // Le robot n'a pas touché
     else {
-      userSquares[loc].classList.add('miss')
-      print("Raté")
+      userSquares[loc].classList.add('miss');
+      print("Raté");
     }
   }
 
@@ -166,14 +172,14 @@ function revealSquare(joueur, loc) {
 
 // Retourne 0 si non, 1 si user a gagné -1 si computer a gagne
 function isFinish() {
-  let user1Finish = true
-  let user2Finish = true
-  for (let i = 0; i < shipArray.length; i++) {
-    if (userLost[i] <= shipArray[i].size) user2Finish = false;
-    if (enemyLost[i] <= shipArray[i].size) user1Finish = false;
+  let user1Finish = true;
+  let user2Finish = true;
+  for (let i = 0; i < Boat.getBoatNumber(); i++) {
+    if (userLost[i] <= Boat.getSizeById(i)) user2Finish = false;
+    if (enemyLost[i] <= Boat.getSizeById(i)) user1Finish = false;
   }
 
-  if (user1Finish) return 1
-  if (user2Finish) return -1
-  return 0
+  if (user1Finish) return 1;
+  if (user2Finish) return -1;
+  return 0;
 }
