@@ -6,4 +6,4 @@ by :
 - MELOUK Zachary : Création de toutes les pages externe
 - VACCARO Mathieu : Création du jeu (Partie JS)
 
-Doc : https://docs.google.com/document/d/1iDCmagSN8oi5sy-LPtFqn0dUtNaD0UY4xVlvETSnpt0/edit?hl=fr&tab=t.0
+Rapport : https://docs.google.com/document/d/1iDCmagSN8oi5sy-LPtFqn0dUtNaD0UY4xVlvETSnpt0/edit?hl=fr&tab=t.0
