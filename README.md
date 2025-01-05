@@ -1,7 +1,7 @@
 # Battleship-INSA
  ## Web Programmation Project 3MIC-E
 by :
-- ANWAR Ryad : Création des assets
+- ANWAR Ryad : Gestion des assets
 - BORE Luka : Gestion du Responsive, Github, Création du jeu (Partie HTML,CSS) + Partie réseau (abandonné)
 - MELOUK Zachary : Création de toutes les pages externe
 - VACCARO Mathieu : Création du jeu (Partie JS)
