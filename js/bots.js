@@ -161,11 +161,11 @@ function botMediumHit() {
         // Bateau horizontal
         // On va tirer au hasard, si on va vers la gauche ou vers la droite :
         let dest = 0;
-        while (dest == 0) { dest = Math.random() * 2 - 1 } // Le while permet juste de faire en sorte que le random ne donne pas 0 (et div par 0 ensuite) C'est juste au cas ou
+        while (dest == 0) { dest = Math.random() * 2 - 1; } // Le while permet juste de faire en sorte que le random ne donne pas 0 (et div par 0 ensuite) C'est juste au cas ou
         dest /= Math.abs(dest); // = -1 ou 1
 
         // Si bateau vertical dest *= 10 (pour avoir une transistion en vertical)
-        if (!userSquares[locBase + 1].classList.contains(Boat.getNameById(idBoat))) dest *= 10
+        if (!userSquares[locBase + 1].classList.contains(Boat.getNameById(idBoat))) dest *= 10;
 
         loc = locBase;
         do {

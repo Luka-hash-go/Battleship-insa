@@ -29,7 +29,7 @@ let allShipsPlaced = false;
 const turnDisplay = document.querySelector('#whose-go');
 
 let userSquares = []; // Tableau de ma partie , 1d 100 cases
-let computerSquares = [];
+let computerSquares = []; // Tableau du coté bot, 1d 100 cases
 let alreadyShow = []; // Tableau listant toutes les cases déjà viser (en attaque)
 let userLost = [0,0,0,0,0]; // Tableau contenant tous les bateaux de l'user perdu, on l'init a 0 pour incrémenter plus tard
 let enemyLost = [0,0,0,0,0]; // Tableau contenant tous les bateaux de l'adeversaire perdu, on l'init a 0 pour incrémenter plus tard
