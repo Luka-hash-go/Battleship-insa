@@ -500,17 +500,17 @@ footer {
   margin-bottom: 10px;
 }
 /* centrage bouton start rotate et drop */
-.setup-buttons {
+/*.setup-buttons {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px; /* Ajoute de l'espace entre les boutons */
+  gap: 10px; 
 }
 
 .setup-buttons .btn {
   text-align: center;
-}
+}*/
 
 /* Media query pour telephone */
 @media (max-width: 768px) {
