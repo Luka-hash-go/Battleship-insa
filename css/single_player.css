@@ -159,13 +159,17 @@ footer {
   color: white; /* Couleur du texte en blanc */
   border: none; /* Supprime les bordures si elles existent */
   transition: all 0.3s ease-in-out; /* Transition fluide pour les effets de survol */
-  
+  text-align: center;
 }
 
 /* Effet au survol */
 #setup-buttons .btn:hover {
   background-color: hsl(232, 76%, 41%); /* Couleur de fond au survol */
   color: #ccc; /* Couleur du texte légèrement grisée au survol */
+}
+#setup-buttons{
+  align-items: center;
+  justify-content: center;
 }
 
 
