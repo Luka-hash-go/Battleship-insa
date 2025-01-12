@@ -499,8 +499,8 @@ footer {
 #info label {
   margin-bottom: 10px;
 }
-/* centrage bouton start rotate et drop */
-/*.setup-buttons {
+/* centrage bouton */
+.setup-buttons {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -509,8 +509,20 @@ footer {
 }
 
 .setup-buttons .btn {
+  width: 200px; 
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  background-color: #333; 
+  color: #fff; 
+  border: none;
+  cursor: pointer;
   text-align: center;
-}*/
+}
+
+.setup-buttons .btn:hover {
+  background-color: #555; 
+}
 
 /* Media query pour telephone */
 @media (max-width: 768px) {
