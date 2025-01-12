@@ -462,6 +462,31 @@ footer {
 {
   display: none;
 }
+
+/* style pour la difficulte (slider) */
+#difficulty {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.2); 
+  color: #fff; 
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  -webkit-appearance: none; 
+  -moz-appearance: none; 
+  appearance: none; 
+}
+
+#difficulty option {
+  background-color: #333; 
+  color: #fff; 
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+}
 /* Media query pour telephone */
 @media (max-width: 768px) {
   .navbar {
