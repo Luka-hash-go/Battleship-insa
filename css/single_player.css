@@ -487,6 +487,18 @@ footer {
   font-size: 1rem;
   font-family: 'Montserrat', sans-serif;
 }
+#info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+#info label {
+  margin-bottom: 10px;
+}
 /* Media query pour telephone */
 @media (max-width: 768px) {
   .navbar {
