@@ -91,9 +91,9 @@
     }
     
     #setup-buttons .btn {
-      color: white; /* Couleur du texte en blanc */
-      border: none; /* Supprime les bordures si elles existent */
-      transition: all 0.3s ease-in-out; /* Transition fluide pour les effets de survol */
+      color: white; 
+      border: none; 
+      transition: all 0.3s ease-in-out; 
       border: none;
       width: 30%;
       

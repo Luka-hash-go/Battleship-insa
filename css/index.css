@@ -13,7 +13,6 @@
             display: flex;
             align-items: center;
             background: rgba(0, 0, 0, 0.2); /* Fond noir transparent */
-            /*background: #000; Enlever peut etre ?*    */
             color: #fff;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -180,15 +179,15 @@
   
     .navbar {
         position: relative;
-        flex-direction: column; /* Colonne pour les petits écrans */
-        align-items: center; /* Aligne les éléments à gauche */
+        flex-direction: column; 
+        align-items: center;
         align-self: center;
     }
     
     .navbar a {
-        width: 80%; /* Les liens prennent toute la largeur */
-        text-align: center; /* Texte aligné à gauche */
-        padding: 8% 8%; /* Ajustez le padding selon vos besoins */
+        width: 80%; 
+        text-align: center; 
+        padding: 8% 8%; 
         border-radius: 2px;
         align-self: center;
         position: relative;
