@@ -199,6 +199,14 @@
 }
   /* Media query pour tablette */
 @media (min-width: 769px) and (max-width: 1024px) {
+    .navbar a {
+        font-size: 17px;
+        margin: 0 8px;
+    }
+
+    .navbar .nav-link:hover {
+        font-size: 19px;
+    }
     .footer {
       padding: 15px 30px; 
     }

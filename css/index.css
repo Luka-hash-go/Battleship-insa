@@ -173,6 +173,10 @@
         }
 /* Media queries pour telephone */
 @media (max-width: 768px) {
+    body::before {
+        background-size: cover;
+        filter: blur(120px);
+    }
   
     .navbar {
         position: relative;
@@ -306,5 +310,12 @@
         .footer-mentions {
             font-size: 14px;
             padding: 15px;
+        }
+        .carousel-button.left {
+            margin-left: -98%;
+        }
+    
+        .carousel-button.right {
+            margin-right: -98%;
         }
 }

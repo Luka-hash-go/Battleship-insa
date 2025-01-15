@@ -132,7 +132,7 @@ footer {
 
     body::before {
         background-size: cover;
-        filter: blur(8px);
+        filter: blur(100%);
     }
 
     .card {
