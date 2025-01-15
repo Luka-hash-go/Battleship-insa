@@ -149,10 +149,25 @@ function dragDrop() {
 
   for (let i = premiereCaseDernierBateauSelect; i <= derniereCaseDernierBateauSelect; i += 10 ** Number(!isHorizontal)) {
     let directionClass;
-    if (i === premiereCaseDernierBateauSelect) directionClass = 'start';
-    if (i === derniereCaseDernierBateauSelect) directionClass = 'end';
 
-    if (isHorizontal) userSquares[i].classList.add('taken', 'horizontal', directionClass, nomRaccourciDernierBateau);
+    if (i === premiereCaseDernierBateauSelect) directionClass = 'start';
+    else if (i === derniereCaseDernierBateauSelect) directionClass = 'end';
+    else { // Si le bateau n'est ni le début, ni la fin, on doit mettre une balise 'one', 'two' ou 'three' car les balise int ne sont pas autorisés
+      switch (i.toString()-premiereCaseDernierBateauSelect)
+        {
+          case 1 * 10 ** Number(!isHorizontal): // Le 10 ** Number(!isHorizontal) Permet de prendre en compte si le bateau est vertical ou horizontal
+            directionClass = 'one';
+            break;
+          case 2 * 10 ** Number(!isHorizontal):
+            directionClass = 'two';
+            break;
+          case 3 * 10 ** Number(!isHorizontal):
+            directionClass = 'three';
+            break;
+        }
+      }
+
+    if (isHorizontal) userSquares[i].classList.add('taken', 'horizontal', directionClass , nomRaccourciDernierBateau);
     if (!isHorizontal) userSquares[i].classList.add('taken', 'vertical', directionClass, nomRaccourciDernierBateau);
   }
 

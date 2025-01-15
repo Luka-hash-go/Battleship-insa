@@ -44,11 +44,10 @@ body::before {
 
 .game-container {
   flex-grow: 1; /* Assure que le conteneur prend tout l'espace vertical disponible */
-  min-height: 900px; /* Donne une hauteur minimale pour éviter l'écrasement */
-  padding: 50px 20px; /* Ajoute des espaces sans affecter la hauteur calculée */
+  min-height: 110%; /* Donne une hauteur minimale pour éviter l'écrasement */
+  padding: 20% 20px; /* Ajoute des espaces sans affecter la hauteur calculée */
   position: relative; /* Nécessaire pour que ::before fonctionne correctement */
   width: 80%;
-  max-width: 1200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,11 +62,8 @@ body::before {
 }
 
 footer {
-  
   width: 100%;
   position: relative;
-  bottom: 0;
-  left: 0;
   text-align: center;
   color: #fff;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
@@ -82,8 +78,6 @@ footer {
 .game-container::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
@@ -91,9 +85,6 @@ footer {
   background-image: url('../images/fondmmer.jpg');
   background-size: cover;
   background-position: center;
-
-  right: 0;
-  bottom: 0;
 
   border-radius: 15px;
 }
@@ -143,7 +134,6 @@ footer {
 }
 
 .btn {
-
   font-size: inherit;
   background-color: hsl(208, 78%, 55%);
   padding: .5em 1em;
@@ -153,16 +143,17 @@ footer {
   cursor: pointer;
   border-radius: .2em;
   color: white;
-  
+  text-align: center;
 }
+
 /* Boutons avec texte blanc */
 #setup-buttons .btn {
   color: white; /* Couleur du texte en blanc */
   border: none; /* Supprime les bordures si elles existent */
   transition: all 0.3s ease-in-out; /* Transition fluide pour les effets de survol */
   border: none;
-  width: 180px;
-  
+  cursor: pointer;
+  text-align: center;
 }
 
 /* Effet au survol */
@@ -313,58 +304,6 @@ footer {
 
 }
 
-.destroyer-container {
-  --width: 2;
-  background-image: url('../images/hdestroyer.png'); /* Ajoute l'image du destroyer */
-}
-
-.destroyer-container-vertical {
-  --height: 2;
-  --width: 1;
-  background-image: url('../images/destroyer.png'); /* Ajoute l'image du destroyer */
-
-}
-
-.submarine-container,
-.cruiser-container {
-  --width: 3;
-  background-image: url('../images/hsubmarine&cruiser.png'); /* Ajoute l'image du destroyer */
-
-}
-
-.submarine-container-vertical,
-.cruiser-container-vertical {
-  --height: 3;
-  --width: 1;
-  background-image: url('../images/submarine&cruiser.png'); /* Ajoute l'image du destroyer */
-
-}
-
-.battleship-container {
-  --width: 4;
-  background-image: url('../images/hbattleship.png'); /* Ajoute l'image du destroyer */
-
-}
-
-.battleship-container-vertical {
-  --height: 4;
-  --width: 1;
-  background-image: url('../images/battleship.png'); /* Ajoute l'image du destroyer */
-
-}
-
-.carrier-container {
-  --width: 5;
-  background-image: url('../images/hcarrier.png'); /* Ajoute l'image du destroyer */
-
-}
-
-.carrier-container-vertical {
-  --height: 5;
-  --width: 1;
-  background-image: url('../images/carrier.png'); /* Ajoute l'image du destroyer */
-}
-
 .hidden-info {
   font-size: 1.5rem;
   align-items: center;
@@ -503,107 +442,4 @@ footer {
 
 #info label {
   margin-bottom: 10px;
-}
-
-/* Media query pour telephone */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column; 
-    align-items: center; 
-  }
-
-  .navbar a {
-    width: 80%; 
-    text-align: center; 
-    padding: 8% 8%; 
-    border-radius: 2px;
-  }
-
-  .game-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100% ;
-    height: 1%;
-    padding: 10px;
-    margin: 1% 1%;
-    max-height: 1%;
-    overflow-y: auto;
-    
-  }
-  .btn {
-    font-size: 1%;
-    display: contents;
-    align-self: center;
-    width : 50%;
-  }
-  #setup-buttons .btn {
-    width: 31.9% ;
-    font-size: 49.5%;
-  }
-  body::before {
-    background-size: contain;
-    filter: blur(10px);
-  }
-  
-  #info label {
-    margin-bottom: 10px;
-    font-size :80% ;
-  }
-
-}
-/* Media query pour tablette */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .navbar a {
-    font-size: 17px;
-    margin: 0 8px;
-  }
-
-  .navbar .nav-link:hover {
-    font-size: 19px;
-  }
-
-  .game-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 1px;
-    padding: 10px;
-    margin: 1% 1%;
-    max-height: 80vh;
-    overflow-y: auto;
-  }
-
-  .game-grid {
-    width: 90%;
-    max-width: 500px;
-  }
-
-  .ship-container {
-    gap: 15px;
-  }
-  body::before {
-    background-size: contain;
-    filter: blur(20px);
-  }
-  .btn {
-    cursor: pointer;
-    border-radius: .2em;
-    color: white;
-    font-size: 14px;
-    padding: 10% 10%;
-    margin: 1% 1.19%; 
-    
-  }
-  
-  #setup-buttons .btn {
-    color: white; /* Couleur du texte en blanc */
-    border: none; /* Supprime les bordures si elles existent */
-    transition: all 0.3s ease-in-out; /* Transition fluide pour les effets de survol */
-    border: none;
-    width: 30%;
-    
-  }
- 
 }
