@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const newsData = [
         { title: "Nouvelle fonctionnalité", description: "Comming SOON : Ajout d'un mode multijoueur amélioré avec des récompenses exclusives.", image: "images/image1.png" },
         { title: "Mise à jour", description: "Correction de bugs critiques et optimisation des performances pour garantir une fluidité exceptionnelle sur les appareils mobiles. Les améliorations visent à offrir une navigation sans accroc, avec des temps de chargement réduits et une compatibilité renforcée pour toutes les plateformes modernes. Les joueurs peuvent désormais profiter d'une expérience ininterrompue, même sur les appareils les plus modestes.", image: "images/image2.jpg" },
-        { title: "Événement spécial", description: "Un tournoi en ligne palpitant, ouvert à tous les joueurs, offrant l'opportunité de remporter des prix incroyables. Ce grand événement met en avant la stratégie, la compétition et la camaraderie, rassemblant la communauté dans un défi mémorable. Préparez-vous à montrer vos compétences et à atteindre de nouveaux sommets dans un cadre compétitif et convivial.", image: "images/image3.png" }
+        { title: "Événement spécial", description: "Un tournoi en ligne palpitant, ouvert à tous les joueurs, offrant l'opportunité de remporter des prix incroyables. Ce grand événement met en avant la stratégie, la compétition et la camaraderie, rassemblant la communauté dans un défi sensationel. Préparez-vous à montrer vos compétences et à atteindre de nouveaux sommets dans un cadre compétitif et convivial.", image: "images/image3.png" }
     ];
 
     let currentIndex = 0;
