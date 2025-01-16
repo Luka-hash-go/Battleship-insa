@@ -154,6 +154,7 @@ footer {
   border: none;
   cursor: pointer;
   text-align: center;
+  width: 200px;
 }
 
 /* Effet au survol */
