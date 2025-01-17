@@ -21,7 +21,6 @@ body::before {
 }
 
 .navbar {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 3; /* Assure que la navbar est toujours visible */
   margin-bottom: 50px;
 }
@@ -57,9 +56,10 @@ body::before {
   margin-bottom: 5px; /* Ajout d'espace en bas */
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   overflow: hidden;
 }
+
+
 
 footer {
   width: 100%;
@@ -154,7 +154,11 @@ footer {
   border: none;
   cursor: pointer;
   text-align: center;
+<<<<<<< Updated upstream
   width: 200px;
+=======
+  height: 80px;
+>>>>>>> Stashed changes
 }
 
 /* Effet au survol */
