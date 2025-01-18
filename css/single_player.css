@@ -23,6 +23,7 @@ body::before {
 .navbar {
   z-index: 3; /* Assure que la navbar est toujours visible */
   margin-bottom: 50px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .navbar a {
